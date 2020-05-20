@@ -1,0 +1,104 @@
+<div class="container">
+	<ol class="breadcrumb mt-2">
+		<li class="breadcrumb-item active">Mise à jour des candidats</li>
+	</ol>
+<div *ngIf="message == 1" class="alert alert-success alert-dismissible fade show text-center" role="alert">
+		<strong>Félicitations !</strong> Insertion effectuée avec success.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div *ngIf="message == 0" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+		<strong>Erreur !</strong> Reéssayer.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="col-10 offset-1">
+		<div class="card">
+			<div class="card-header bg-primary text-white">
+				Ajouter un nouveau candidat
+			</div>
+			<div class="card-body">
+				<form #f="ngForm" (ngSubmit)="onSaveCandidat()">
+					<div class="form-group">
+						<div class="row">
+							<div class="col">
+								Nom :<input type="text" class="form-control" name="nom" placeholder="Votre nom"  #nom="ngModel" [(ngModel)]="candidat.nom">
+							</div>
+							<div class="col">
+								Prénom :<input type="text" class="form-control" name="prenom" placeholder="Votre prénom"  #prenom="ngModel" [(ngModel)]="candidat.prenom">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col">
+								Tél :<input type="text" class="form-control" name="telephone" placeholder="Votre tel"  #telephone="ngModel" [(ngModel)]="candidat.telephone">
+							</div>
+							<div class="col">
+								Ville :<input type="text" class="form-control" name="ville" placeholder="Votre ville"  #ville="ngModel" [(ngModel)]="candidat.ville">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col">
+								Age :<input type="number" class="form-control" name="age" placeholder="Votre age"  #age="ngModel" [(ngModel)]="candidat.age">
+							</div>
+							<div class="col">
+								Disponibilite :<input type="text" class="form-control" name="disponibilite" placeholder="Votre disponibilite"  #disponibilite="ngModel" [(ngModel)]="candidat.disponibilite">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col">
+								Expérience :<input type="text" class="form-control" name="experience" placeholder="Votre expérience"  #experience="ngModel" [(ngModel)]="candidat.experience">
+							</div>
+							<div class="col">
+								Salaire <input type="text" class="form-control" name="salaire" placeholder="Salaire"  #salaire="ngModel" [(ngModel)]="candidat.salaire">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col">
+								Résumé :<input type="text" class="form-control" name="resume" ngModel
+									[(ngModel)]="candidat.resume">
+							</div>
+							<div class="col">
+								Cvtheque :<input type="text" class="form-control" name="cvtheque" ngModel
+									[(ngModel)]="candidat.cvtheque">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col">
+								<label>Compétence :</label>
+								<select *ngIf="competences" class="form-control" name="competence" #competence="ngModel" [(ngModel)]="candidat.competence">
+									<option *ngFor="let c of competences" [ngValue]="c">
+									{{ c.libelle }}
+								</option>
+								</select>
+								
+							</div>
+						 <div class="col">
+								<label>Métier :</label>
+								<select *ngIf="metiers" class="form-control" name="metier" #metier="ngModel" [(ngModel)]="candidat.metier">
+								<option *ngFor="let m of metiers" [ngValue]="m">
+									{{ m.it }}
+								</option>
+								</select>
+								
+							</div> 
+						</div>
+					</div>
+					<button type="submit" class="btn btn-success">Ajouter</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,57 @@
+<div class="container">
+	<ol class="breadcrumb mt-2">
+		<li class="breadcrumb-item active">Mise à jour des responsables</li>
+	</ol>
+<div *ngIf="message == 1" class="alert alert-success alert-dismissible fade show text-center" role="alert">
+		<strong>Félicitations !</strong> Insertion effectuée avec success.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div *ngIf="message == 0" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+		<strong>Erreur !</strong> Reéssayer.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="col-10 offset-1">
+		<div class="card">
+			<div class="card-header bg-primary text-white">
+				Ajouter un nouveau responsable
+			</div>
+			<div class="card-body">
+				<form #f="ngForm" (ngSubmit)="onSaveResponsable()">
+					<div class="form-group">
+						<div class="row">
+							<div class="col">
+								Nom :<input type="text" class="form-control" name="nom" placeholder="Votre nom"  #nom="ngModel" [(ngModel)]="responsable.nom">
+							</div>
+							<div class="col">
+								Prénom :<input type="text" class="form-control" name="prenom" placeholder="Votre prénom"  #prenom="ngModel" [(ngModel)]="responsable.prenom">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col">
+								Tél :<input type="text" class="form-control" name="telephone" placeholder="Votre tel"  #telephone="ngModel" [(ngModel)]="responsable.telephone">
+							</div>
+							<div class="col">
+								Ville :<input type="text" class="form-control" name="ville" placeholder="Votre ville"  #ville="ngModel" [(ngModel)]="responsable.ville">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col">
+								Age :<input type="number" class="form-control" name="age" placeholder="Votre age"  #age="ngModel" [(ngModel)]="responsable.age">
+							</div>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-success">Ajouter</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+

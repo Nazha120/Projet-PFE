@@ -1,0 +1,42 @@
+<div class="container">
+  <ol class="breadcrumb mt-2">
+    <li class="breadcrumb-item active">Mise à jour des responsables</li>
+</ol>
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    Liste des responsables
+  </div>
+    <div class="card-body">
+        <form #f="ngForm" (ngSubmit)="onChercher(f.value)">
+            <div class="form-group">
+              <input type="text" name="keyword" placeholder="Mot de rehcreche" ngModel>
+              <button type="submit" class="btn btn-primary btn-sm ml-3">Chercher</button>
+            </div>
+        </form>
+      </div>
+    <div class="card-body bg-light pt-0">
+		<table *ngIf="responsables" class="table table-striped">
+			  <thead><tr>
+        <th>Id</th><th>Nom</th><th>Prénom</th>
+        <th><i class="fa fa-trash text-secondary" aria-hidden="true"></i></th>
+      <th><i class="fa fa-edit text-secondary" aria-hidden="true"></i></th></tr></thead>
+      <tbody>
+			<tr *ngFor="let c of responsables?.content">
+      <td>{{c.id}}</td>
+      <td>{{c.nom}}</td>
+      <td>{{c.prenom}}</td>
+      <td><a href="javascript:void(0);" (click)="onDeleteResponsable(c.id)"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
+      <td><a href="javascript:void(0);" (click)="onEditResponsable(c.id)"><i class="fa fa-edit text-success" aria-hidden="true"></i></a></td>
+      </tr>
+      </tbody>
+    </table>
+<nav>
+     <ul *ngIf="pages" class="pagination pagination-sm">
+       <li class="page-item" [ngClass]="i==currentPage?'active':''" *ngFor="let c of pages; let i = index">
+       <a href="javascript:void(0);" class="page-link" (click)="onPageResponsable(i)">{{i}}</a>
+       </li>
+     </ul>
+     </nav>
+  </div>
+</div>
+</div>

@@ -1,0 +1,45 @@
+<div class="container">
+  <ol class="breadcrumb mt-2">
+    <li class="breadcrumb-item active">Mise à jour les entretiens</li>
+</ol>
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    Liste des entretiens
+  </div>
+    <div class="card-body">
+        <form #f="ngForm" (ngSubmit)="onChercher(f.value)">
+            <div class="form-group">
+              <input type="text" name="keyword" placeholder="Mot de rehcreche" ngModel>
+              <button type="submit" class="btn btn-primary btn-sm ml-3">Chercher</button>
+            </div>
+        </form>
+      </div>
+    <div class="card-body bg-light pt-0">
+		<table *ngIf="entretiens" class="table table-striped">
+			  <thead><tr>
+        <th>Id</th><th>Date</th><th>Heure</th><th>Lieu</th><th>Candidat</th><th>Responsable</th>
+        <th><i class="fa fa-trash text-secondary" aria-hidden="true"></i></th>
+      <th><i class="fa fa-edit text-secondary" aria-hidden="true"></i></th></tr></thead>
+      <tbody>
+			<tr *ngFor="let e of entretiens?.content">
+      <td>{{e.id}}</td>
+      <td>{{e.date}}</td>
+      <td>{{e.heure}}</td>
+      <td>{{e.lieu}}</td>
+      <td>{{e.candidat["nom"]}}</td>
+      <td>{{e.responsable["nom"]}}</td>
+      <td><a href="javascript:void(0);" (click)="onDeleteEntretien(e.id)"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
+      <td><a href="javascript:void(0);" (click)="onEditEntretien(e.id)"><i class="fa fa-edit text-success" aria-hidden="true"></i></a></td>
+      </tr>
+      </tbody>
+    </table>
+<nav>
+     <ul *ngIf="pages" class="pagination pagination-sm">
+       <li class="page-item" [ngClass]="i==currentPage?'active':''" *ngFor="let e of pages; let i = index">
+       <a href="javascript:void(0);" class="page-link" (click)="onPageEntretien(i)">{{i}}</a>
+       </li>
+     </ul>
+     </nav>
+  </div>
+</div>
+</div>

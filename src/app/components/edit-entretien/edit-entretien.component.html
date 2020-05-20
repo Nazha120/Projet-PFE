@@ -1,0 +1,75 @@
+<div class="container">
+	<ol class="breadcrumb mt-2">
+		<li class="breadcrumb-item active">Mise à jour les entretiens</li>
+	</ol>
+	<div *ngIf="message == 1" class="alert alert-success alert-dismissible fade show text-center" role="alert">
+		<strong>Félicitations !</strong> Modification effectuée avec success.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div *ngIf="message == 0" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+		<strong>Erreur !</strong> Reéssayer.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="col-10 offset-1">
+		<div class="card">
+			<div class="card-header bg-primary text-white">
+				Modifier un candidat
+			</div>
+			<div class="card-body" *ngIf="currentEntretien">
+				<form #f="ngForm" (ngSubmit)="onUpdateEntretien()">
+					<div class="form-group">
+						<div class="row">
+							<div class="col">
+								Date :
+		<input class="form-control" name="date" [ngModel]="currentEntretien.date |date:'yyyy-MM-dd'" type="date"/>
+
+							</div>
+							<div class="col">
+								Heure :<input type="text" class="form-control" name="heure" ngModel
+									[(ngModel)]="currentEntretien.heure">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col">
+								Lieu :<input type="text" class="form-control" name="lieu" ngModel
+									[(ngModel)]="currentEntretien.lieu">
+							</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col">
+								<label>Candidats :</label>
+								<select *ngIf="candidat" class="form-control" name="competences"
+									[(ngModel)]="candidat">
+									<option *ngFor="let c of candidats" [ngValue]="c">
+										{{ c.nom }}
+									</option>
+								</select>
+							</div>
+							<div class="col">
+								<label>responsables :</label>
+								<select *ngIf="responsable" class="form-control" name="responsables"
+									[(ngModel)]="responsable">
+									<option *ngFor="let r of responsables" [ngValue]="r">
+										{{ r.nom }}
+									</option>
+								</select>
+							</div>
+							</div>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-success">Sauvegarder</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

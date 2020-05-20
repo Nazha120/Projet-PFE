@@ -1,0 +1,51 @@
+<div class="container">
+  <ol class="breadcrumb mt-2">
+    <li class="breadcrumb-item active">Mise à jour des candidats</li>
+</ol>
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    Liste des candidats
+  </div>
+    <div class="card-body">
+        <form #f="ngForm" (ngSubmit)="onChercher(f.value)">
+            <div class="form-group">
+              <input type="text" name="keyword" placeholder="Mot de rehcreche" ngModel>
+              <button type="submit" class="btn btn-primary btn-sm ml-3">Chercher</button>
+            </div>
+        </form>
+      </div>
+    <div class="card-body bg-light pt-0">
+		<table *ngIf="candidats" class="table table-striped">
+			  <thead><tr>
+        <th>Id</th><th>Nom</th><th>Prénom</th><th>Disponibilités</th><th>Résumé</th>
+        <th>Cvthèque</th><th>Expérience</th>
+        <th>Compétence</th><th>Métier</th>
+        <th><i class="fa fa-trash text-secondary" aria-hidden="true"></i></th>
+      <th><i class="fa fa-edit text-secondary" aria-hidden="true"></i></th></tr></thead>
+      <tbody>
+			<tr *ngFor="let c of candidats?.content">
+      <td>{{c.id}}</td>
+      <td>{{c.nom}}</td>
+      <td>{{c.prenom}}</td>
+      <td>{{c.disponibilite}}</td>
+      <td>{{c.resume}}</td>
+      <td>{{c.cvtheque}}</td>
+      <td>{{c.experience}}</td>
+      <td>{{c.competence["libelle"]}}</td>
+      <td>{{c.metier["it"]}}</td>
+      <td><a href="javascript:void(0);" (click)="onDeleteCandidat(c.id)"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
+      <td><a href="javascript:void(0);" (click)="onEditCandidat(c.id)"><i class="fa fa-edit text-success" aria-hidden="true"></i></a></td>
+      </tr>
+      </tbody>
+    </table>
+<nav>
+     <ul *ngIf="pages" class="pagination pagination-sm">
+       <li class="page-item" [ngClass]="i==currentPage?'active':''" *ngFor="let c of pages; let i = index">
+       <a href="javascript:void(0);" class="page-link" (click)="onPageCandidat(i)">{{i}}</a>
+       </li>
+     </ul>
+     </nav>
+  </div>
+</div>
+</div>
+
