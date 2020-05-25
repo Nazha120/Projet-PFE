@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CandidatsComponent } from './components/candidats/candidats.component';
@@ -16,7 +16,11 @@ import { ResponsablesComponent } from './components/responsables/responsables.co
 import { NewResponsableComponent } from './components/new-responsable/new-responsable.component';
 import { EditResponsableComponent } from './components/edit-responsable/edit-responsable.component';
 import {DatePipe} from '@angular/common';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './login/login.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import {AuthInterceptor} from "./services/auth.interceptor";
 
 
 
@@ -34,15 +38,26 @@ import {DatePipe} from '@angular/common';
     ResponsablesComponent,
     NewResponsableComponent,
     EditResponsableComponent,
+    RegisterComponent,
+    LoginComponent,
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
+
     ],
-  providers: [DatePipe],
+  providers: [DatePipe,
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi   : true
+    }],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,12 @@
-<app-template>
-	
-</app-template>
+<span *ngIf="!isLoggedIn ; then loggedIn else login"></span>
+<ng-template #loggedIn>
+  <app-template>
+  </app-template>
+</ng-template>
+
+<ng-template #login>
+  <app-login></app-login> <!-- here just your selector of the login component-->
+</ng-template>
+
+
+

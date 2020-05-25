@@ -14,6 +14,6 @@ export class Candidat{
 	public resume: string;
 	public cvtheque: string;
 	public competence: Competence;
-    public metier: Metier;
+	public metier: Metier;
 
 }

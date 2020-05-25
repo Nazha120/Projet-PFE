@@ -5,20 +5,17 @@ declare var jQuery: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit  {
+export class AppComponent implements OnInit {
+  isLoggedIn: boolean =  true;
+  isAuthenticated(): boolean {
+
+    return true;
+  }
+
 
   ngOnInit() {
-        (function($) {
-         const path = window.location.href;
-         $('#layoutSidenav_nav .sb-sidenav a.nav-link').each(function() {
-            if (this.href === path) {
-                $(this).addClass('active');
-            }
-        });
-         $('#sidebarToggle').on('click', function(e) {
-        e.preventDefault();
-        $('body').toggleClass('sb-sidenav-toggled');
-    });
-})(jQuery);
+    this.isAuthenticated();
+
   }
 }
+
