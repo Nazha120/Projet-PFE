@@ -14,19 +14,19 @@ export class EntretienService {
   constructor(private httpClient: HttpClient) { }
 
   public addEntretien(entretien: Entretien): Observable<Entretien> {
-    return this.httpClient.post<Entretien>(this.host + '/addEntretien', entretien);
+    return this.httpClient.post<Entretien>(this.host, entretien);
   }
   public getEntretiens(mc: string, page: number, size: number) {
-    return this.httpClient.get(this.host + '/getEntretiens?mc=' + mc + '&page=' + page + '&size=' + size);
+    return this.httpClient.get(this.host + 'search' + '?mc=' + mc + '&page=' + page + '&size=' + size);
   }
   public getEntretien(id: number): Observable<Entretien> {
-    return this.httpClient.get<Entretien>(this.host + '/getEntretien?id=' + id);
+    return this.httpClient.get<Entretien>(this.host + id);
   }
   public deleteEntretien(id: number) {
-    return this.httpClient.delete(this.host + '/deleteEntretien?id=' + id);  
+    return this.httpClient.delete(this.host + id);
   }
   public updateEntretien(entretien : Entretien): Observable<Entretien> {
-    return this.httpClient.put<Entretien>(this.host + '/updateEntretien', entretien);
+    return this.httpClient.put<Entretien>(this.host, entretien);
   }
 }
 

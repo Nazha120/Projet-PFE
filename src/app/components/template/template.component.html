@@ -8,7 +8,7 @@
 						<a class="dropdown-item" href="#">Paramètres</a>
 						<a class="dropdown-item" href="#">Mon compte</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="login.html">Déconnecter</a>
+                        <a class="dropdown-item" (click)="logout()">Déconnecter</a>
                     </div>
                 </li>
             </ul>
@@ -46,28 +46,31 @@
                             </a>
                                 <div class="collapse" id="responsable" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" routerLink="/add-responsable">Nouveau responsable</a>
-                                        <a class="nav-link" routerLink="responsables">Rechercher</a></nav>
-                                    </div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
-                            >
+                                      <a class="nav-link" routerLink="/add-responsable">Nouveau responsable</a>
+                                      <a class="nav-link" routerLink="responsables">Rechercher</a></nav>
+                                </div>
+                          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts"
+                             aria-expanded="false" aria-controls="collapseLayouts"
+                          >
                             <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                             Entretiens
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
-                                >
-                            </a>
-                                <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                    <nav class="sb-sidenav-menu-nested nav">
+                            >
+                          </a>
+                          <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                               data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
 
-                                        <a class="nav-link" routerLink="/new-entretien">Nouveau entretien</a>
-                                                                  
-                                        <a class="nav-link" routerLink="entretiens">Rechercher</a></nav>
-                                    </div>    
-                                                <div class="sb-sidenav-menu-heading">Statistiques</div>
-                                                <a class="nav-link" href="charts.html"
-                                                ><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                                Graphes</a
-                                                ><a class="nav-link" href="tables.html"
+                              <a class="nav-link" routerLink="/new-entretien">Nouveau entretien</a>
+
+                              <a class="nav-link" routerLink="entretiens">Rechercher</a></nav>
+                          </div>
+                          <div class="sb-sidenav-menu-heading">Statistiques</div>
+                          <a class="nav-link" href="charts.html"
+                          >
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Graphes</a
+                          ><a class="nav-link" href="tables.html"
                                                 ><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                                 Etats</a
                                                 >
@@ -79,21 +82,21 @@
                                     <main>
                                         <div class="container-fluid">
 											<router-outlet>
-												
+
 											</router-outlet>
                                         </div>
                                     </main>
                                     <footer class="py-4 bg-light mt-auto">
                                         <div class="container-fluid">
-                                            <div class="d-flex align-items-center justify-content-between small">
-                                                <div class="text-muted">Copyright &copy; Gestion des entretiens </div>
-                                                <div>
-                                                    <a href="#">Privacy Policy</a>
-                                                    &middot;
-                                                    <a href="#">Terms &amp; Conditions</a>
-                                                </div>
+                                          <div class="d-flex align-items-center justify-content-between small">
+                                            <div class="text-muted">Copyright &copy; Gestion des entretiens</div>
+                                            <div>
+                                              <a href="#">Privacy Policy</a>
+                                              &middot;
+                                              <a href="#">Terms &amp; Conditions</a>
                                             </div>
+                                          </div>
                                         </div>
                                     </footer>
                                 </div>
-                            </div> 
+        </div>

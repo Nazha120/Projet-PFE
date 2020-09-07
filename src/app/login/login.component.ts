@@ -12,14 +12,17 @@ import {AccountService} from "../services/account.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    loginForm = new FormGroup({
-    login: new FormControl('',  Validators.required ),
+  loginForm = new FormGroup({
+    login: new FormControl('', Validators.required),
     password: new FormControl(''),
   });
-  constructor(private authenticationService: AuthenticationService, private router: Router, private accountService: AccountService) { }
+
+  constructor(private authenticationService: AuthenticationService, private router: Router, private accountService: AccountService) {
+  }
 
   ngOnInit() {
   }
+
   onLogin(): void {
 
     let user: IUser;
@@ -34,8 +37,11 @@ export class LoginComponent implements OnInit {
         this.authenticationService.saveToken(jwtToken);
         this.accountService.account(user.username).subscribe(
           data => {
-         console.log('User Info ' + data);
-         this.router.navigate(['dashboard']);
+            console.log('User Info ' + data);
+            if ('body' in data) {
+              this.authenticationService.setCurrentAccount(data.body);
+            }
+            this.router.navigate(['dashboard']);
 
           }
         );

@@ -1,18 +1,19 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {AuthenticationService} from "./authentification.service";
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpResponse, HttpHeaders} from '@angular/common/http';
 import {Observable} from "rxjs";
-import {IUser} from "../model/user.model";
+import {IAccount} from "../model/account.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-   SERVER_URL: string  = "http://localhost:8080";
-  constructor(private http: HttpClient, private authenticationService: AuthenticationService) { }
+  SERVER_URL: string = "http://localhost:8080";
 
-  account(user: string) : Observable<IUser>{
+  constructor(private http: HttpClient) {
+  }
 
-    return this.http.get<IUser>(this.SERVER_URL + '/account/' + user);
+  account(user: string): Observable<HttpResponse<IAccount>> {
+
+    return this.http.get<IAccount>(this.SERVER_URL + '/api/account/' + user, {observe: 'response'});
   }
 }

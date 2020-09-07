@@ -12,26 +12,28 @@ import { ResponsablesComponent } from './components/responsables/responsables.co
 import { NewResponsableComponent } from './components/new-responsable/new-responsable.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {LoginComponent} from "./login/login.component";
+import {RegisterComponent} from "./components/register/register.component";
 
 
 
 
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
+  {path: 'dashboard', component: DashboardComponent},
 
-  { path: 'login', component: LoginComponent},
-  { path: 'candidats', component: CandidatsComponent },
-  { path: 'add-candidat', component: NewCandidatComponent },
-  { path: 'edit-candidat/:id', component: EditCandidatComponent },
-  { path: 'new-entretien', component:NewEntretienComponent},
-  { path: 'entretiens', component: EntretiensComponent},
-  { path: 'edit-entretien/:id', component: EditEntretienComponent},
-  { path: 'edit-responsable/:id', component: EditResponsableComponent},
-  { path: 'responsables', component: ResponsablesComponent},
-  { path: 'add-responsable', component: NewResponsableComponent },
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'candidats', component: CandidatsComponent},
+  {path: 'add-candidat', component: NewCandidatComponent},
+  {path: 'edit-candidat/:id', component: EditCandidatComponent},
+  {path: 'new-entretien', component: NewEntretienComponent},
+  {path: 'entretiens', component: EntretiensComponent},
+  {path: 'edit-entretien/:id', component: EditEntretienComponent},
+  {path: 'edit-responsable/:id', component: EditResponsableComponent},
+  {path: 'responsables', component: ResponsablesComponent},
+  {path: 'add-responsable', component: NewResponsableComponent},
 
-  { path: '', redirectTo: 'dashboard' , pathMatch: 'full' },
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
 
 ];
 

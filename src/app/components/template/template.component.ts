@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthenticationService} from "../../services/authentification.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-template',
@@ -7,11 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthenticationService, private router: Router) {
+  }
 
   ngOnInit() {
-        console.log('template');
+    console.log('template');
 
   }
 
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['login']);
+  }
 }

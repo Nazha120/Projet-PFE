@@ -1,25 +1,28 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {HttpInterceptor, HttpRequest, HttpHandler, HttpEvent} from '@angular/common/http';
+import {AuthenticationService} from './authentification.service';
 
-
-
-import {AuthenticationService} from "./authentification.service";
-import {Observable} from "rxjs";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(private authentificationService: AuthenticationService) {
   }
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    req = req.clone({
-      setHeaders: {
-        'Content-Type' : 'application/json',
-        'Accept'       : 'application/json',
-        'Authorization': `Bearer ${this.authenticationService.loadToken()}`
 
-      },
-    });
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    if (request.url.includes('login') || request.url.includes('register')) {
+      return next.handle(request);
+    }
 
-    return next.handle(req);
+    const token = this.authentificationService.loadToken();
+
+    if (!!token) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: token
+        }
+      });
+    }
+    return next.handle(request);
   }
 }
