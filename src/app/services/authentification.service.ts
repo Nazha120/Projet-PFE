@@ -87,4 +87,8 @@ export class AuthenticationService {
     if (date === undefined) return false;
     return !(date.valueOf() > new Date().valueOf());
   }
+
+  public getRoleByUsername(username: String) {
+    return this.http.get<String>(this.host + '/getRoleByUsername?username=' + username);
+  }
 }

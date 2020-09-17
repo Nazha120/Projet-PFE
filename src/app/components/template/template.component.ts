@@ -9,6 +9,8 @@ import {Router} from "@angular/router";
 })
 export class TemplateComponent implements OnInit {
 
+  role : String = localStorage.getItem('roleUser');
+
   constructor(private authService: AuthenticationService, private router: Router) {
   }
 

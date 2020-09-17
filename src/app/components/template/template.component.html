@@ -24,7 +24,37 @@
                             Dashboard</a
                             >
                             <div class="sb-sidenav-menu-heading">Mise à jour</div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
+
+                          <!--=========== Début élément si admin ============= -->
+                          <a *ngIf="role == 'ADMIN'" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
+                          >
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Admin ...
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
+                            >
+                          </a>
+                          <!--=========== Fin élément si admin ============= -->
+                          <!--=========== Début élément si recruteur ============= -->
+                          <a *ngIf="role == 'RECRUTEUR'" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
+                          >
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Recruteur ...
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
+                            >
+                          </a>
+                          <!--=========== Fin élément si recruteur ============= -->
+                          <!--=========== Début élément si user ============= -->
+                          <a *ngIf="role == 'USER'" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
+                          >
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            User ...
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
+                            >
+                          </a>
+                          <!--=========== Fin élément si user ============= -->
+
+
+                          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
                             >
                             <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                             Candidats

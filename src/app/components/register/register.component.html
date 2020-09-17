@@ -11,11 +11,12 @@
             </div>
             <div class="form-group">
               <label>Password</label>
-              <input formControlName="password" id="password" type="password" placeholder="Mot de passe"/>
+              <input formControlName="password" id="password" type="password" placeholder="Mot de passe" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
             </div>
             <div class="form-group">
               <label>Repassword</label>
-              <input formControlName="repassword" id="repassword" type="repassword"
+              <input formControlName="repassword" id="repassword" type="password"
                      placeholder="Confirmation de mot de passe"/>
             </div>
 
